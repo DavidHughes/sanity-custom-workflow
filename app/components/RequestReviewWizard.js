@@ -36,7 +36,11 @@ export default function RequestReviewWizard({onSend, metadata}) {
   return (
     <>
       <Menu style={{maxHeight: 250}}>
-        <UserAssignmentMenu {...inputProps} value={value} userList={userList} />
+        <UserAssignmentMenu
+          {...inputProps}
+          value={value}
+          userList={userList.filter(user => !user.isCurrentUser)}
+        />
       </Menu>
       <Card borderTop={1} padding={1} style={{textAlign: 'center'}}>
         <Button

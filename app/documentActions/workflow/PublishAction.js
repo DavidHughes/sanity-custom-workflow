@@ -6,7 +6,7 @@ export function PublishAction(props) {
   const ops = useDocumentOperation(props.id, props.type)
   const metadata = useWorkflowMetadata(props.id, inferMetadataState(props))
 
-  if (props.liveEdit || metadata.data.state === 'published') {
+  if (props.liveEdit || ['published', 'inReview'].includes.metadata?.data.state) {
     return null
   }
 
@@ -22,7 +22,7 @@ export function PublishAction(props) {
   }
 
   return {
-    disabled: ops.publish.disabled,
+    disabled: metadata.data.state === 'inReview' || ops.publish.disabled,
     icon: PublishIcon,
     shortcut: 'mod+shift+p',
     label: 'Publish',
