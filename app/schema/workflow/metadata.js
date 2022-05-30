@@ -14,7 +14,9 @@ export default {
       description: 'The people who are assigned to move this further in the workflow.',
       of: [{type: 'string'}],
       inputComponent: UserAssignmentMenu
-    }
+    },
+    {type: 'string', name: 'feedback', title: 'Review Feedback'},
+    {type: 'string', name: 'reviewerId', title: 'Reviewer ID'}
   ],
   liveEdit: true
 }

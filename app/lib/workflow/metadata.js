@@ -15,7 +15,10 @@ export function useWorkflowMetadata(id, defaultState) {
     data,
     delete: deleteMetadata,
     setAssignees,
-    setState
+    setState,
+    clearFeedback,
+    setFeedback,
+    setReviewerId
   }
 
   function clearAssignees() {
@@ -36,5 +39,17 @@ export function useWorkflowMetadata(id, defaultState) {
 
   function setState(state) {
     ops.patch.execute([{setIfMissing: {documentId: id}}, {set: {state}}])
+  }
+
+  function clearFeedback() {
+    ops.patch.execute([{setIfMissing: {documentId: id}}, {unset: ['feedback']}])
+  }
+
+  function setFeedback(feedback) {
+    ops.patch.execute([{setIfMissing: {documentId: id}}, {set: {feedback}}])
+  }
+
+  function setReviewerId(reviewerId) {
+    ops.patch.execute([{setIfMissing: {documentId: id}}, {set: {reviewerId}}])
   }
 }
