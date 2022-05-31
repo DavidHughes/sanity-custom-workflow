@@ -27,9 +27,6 @@ export function RequestReviewAction(props) {
       metadata.clearAssignees()
     } else {
       metadata.setAssignees(assignees)
-      metadata.setFeedback(
-        `This document sucks and here's why. Signed: ${JSON.stringify(assignees)}`
-      )
     }
 
     metadata.setState('inReview')
